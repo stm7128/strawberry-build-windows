@@ -56,6 +56,9 @@ jobs:
         if: matrix.arch == 'i686'
         run: |
           patch -p1 < diff/0001-a.patch
+          sed -i 's/libcrypto-4-x64\.dll/libcrypto-4.dll/g' dist/windows/strawberry.nsi.in
+          sed -i 's/libgcc_s_seh-1\.dll/libgcc_s_sjlj-1.dll/g' dist/windows/strawberry.nsi.in
+          sed -i 's/libssl-4-x64\.dll/libssl-4.dll/g' dist/windows/strawberry.nsi.in
   
       - name: Create Custom Toolchain
         run: |
